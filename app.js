@@ -12,7 +12,7 @@ console.log(process.env.MY_SECRET)
 
 const apiRouter = require('./routes/api');
 const usersRouter = require('./routes/users');
-
+const yelp = require('yelp-fusion')
 const app = express();
 
 app.use(cors());
