@@ -19,6 +19,47 @@ router.get('/', (req, res) => {
     })
   })
 
+  router.get('/l_:loc/a_:act', (req, res) => {
+    client.search({
+      term:req.params.act,
+      location:req.params.loc,
+      radius:1200,
+      sort_by:"rating",
+      limit:5,
+
+    })
+      .then(response=>{
+        const allRes=response.jsonBody.businesses;
+        res.json({
+          status:200,
+          data:allRes
+        })
+        .catch(err=>{
+          res.send(err)
+        })
+      })
+    })
+
+    router.get('/l_:loc/c_:cui', (req, res) => {
+      client.search({
+        term:req.params.cui,
+        location:req.params.loc,
+        radius:1200,
+        sort_by:"rating",
+        limit:5,})
+        .then(response=>{
+          const allRes=response.jsonBody.businesses;
+          res.json({
+            status:200,
+            data:allRes,
+            
+          })
+          .catch(err=>{
+            res.send(err)
+          })
+        })
+      })  
+
 
 router.post('/', (req, res) => {
   return res.json({
