@@ -8,8 +8,6 @@ require('dotenv').config();
 
 require('./db/db')
 
-console.log(process.env.MY_SECRET)
-
 const apiRouter = require('./routes/api');
 const usersRouter = require('./routes/users');
 const yelp = require('yelp-fusion')
@@ -30,9 +28,9 @@ app.use(cookieParser());
 app.use('/api/v1', apiRouter);
 app.use('/users', usersRouter);
 
-app.listen(process.env.PORT, () => {
-  console.log(`listening on port ${process.env.PORT}`);
-})
+// app.listen(process.env.PORT, () => {
+//   console.log(`listening on port ${process.env.PORT}`);
+// })
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
