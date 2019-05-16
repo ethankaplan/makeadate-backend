@@ -30,13 +30,26 @@ router.delete('/', (req, res) => {
   return res.json({data: 'Received a DELETE HTTP method user'});
 });
 
+router.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if(err){
+      res.json({err});
+    } else {
+      res.json({
+        success: true,
+        message: "logged out!"
+      });
+    }
+  })
+ })
+
 router.post('/login', async (req, res) => {
   console.log('hit')
   try {
     const foundUser = await User.findOne({username: req.body.username})
     res.json({
       user: foundUser,
-      success: true
+      success: foundUser? true : false
     })
   } catch(err) {
     res.json({err})

@@ -14,12 +14,17 @@ const apiRouter = require('./routes/api');
 const usersRouter = require('./routes/users');
 const yelp = require('yelp-fusion')
 const app = express();
-
+const session =require("express-session")
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  resave:false,
+  secret:"shh",
+  saveUninitialized:false
+}))
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1', apiRouter);
