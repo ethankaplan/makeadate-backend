@@ -14,7 +14,9 @@ const yelp = require('yelp-fusion')
 const app = express();
 const session =require("express-session")
 app.use(cors({
-  origin: true
+  origin: 'https://secure-savannah-81040.herokuapp.com',
+  credentials: true,
+  optionSuccessStatus:200
 }));
 app.use(logger('dev'));
 app.use(express.json());
