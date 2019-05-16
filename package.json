@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.3",
@@ -18,4 +20,7 @@
     "morgan": "~1.9.0",
     "yelp-fusion": "^3.0.0"
   }
+
+
+  
 }

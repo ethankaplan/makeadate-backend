@@ -59,7 +59,12 @@ router.get('/', (req, res) => {
             res.send(err)
           })
         })
-      })  
+      })
+      
+      router.get('/buildresults',(req,res)=>{
+        
+
+      })
 
 
 router.post('/', (req, res) => {
