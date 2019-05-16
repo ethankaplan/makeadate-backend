@@ -20,18 +20,18 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
-  resave:false,
-  secret:"shh",
-  saveUninitialized:false
-}))
+// app.use(session({
+//   resave:false,
+//   secret:"shh",
+//   saveUninitialized:false
+// }))
 // app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1', apiRouter);
 app.use('/users', usersRouter);
 
 app.listen(process.env.PORT, () => {
-  console.log('listening on port 3000');
+  console.log(`listening on port ${process.env.PORT}`);
 })
 
 // catch 404 and forward to error handler
