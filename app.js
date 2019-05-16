@@ -13,7 +13,9 @@ const usersRouter = require('./routes/users');
 const yelp = require('yelp-fusion')
 const app = express();
 const session =require("express-session")
-app.use(cors());
+app.use(cors({
+  origin: 'https://secure-savannah-81040.herokuapp.com'
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
