@@ -8,10 +8,11 @@ const User = require('../models/User')
 
 router.post('/createDate/:id', async (req, res) => {
   try {
+    console.log("Date post route")
     console.log(req.body)
     console.log(req.params.id)
     const foundUser=await User.findById(req.params.id)
-    foundUser.dates.push(req.body)
+    foundUser.dates.create(req.body)
   } catch(err) {
     res.json({err})
   }
