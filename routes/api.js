@@ -35,9 +35,7 @@ router.get('/', (req, res) => {
           status:200,
           data:allRes
         })
-        .catch(err=>{
-          res.send(err)
-        })
+        
       })
     })
 
@@ -55,9 +53,7 @@ router.get('/', (req, res) => {
             data:allRes,
             
           })
-          .catch(err=>{
-            res.send(err)
-          })
+          
         })
       })
       

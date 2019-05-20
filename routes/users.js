@@ -4,14 +4,28 @@ const router = express.Router();
 const User = require('../models/User')
 
 
-router.get('/:id', async (req, res) => {
-    try {
-      const user = await User.findById(req.params.id)
-      res.json({user})
-    } catch(err) {
-      res.json({err})
-    }
+
+
+router.post('/createDate/:id', async (req, res) => {
+  try {
+    console.log(req.body)
+    console.log(req.params.id)
+    const foundUser=await User.findById(req.params.id)
+    foundUser.dates.push(req.body)
+  } catch(err) {
+    res.json({err})
+  }
 });
+
+router.get('/getall', async (req, res) => {
+  try {
+    const user = await User.find({})
+    res.json({user})
+  } catch(err) {
+    res.json({err})
+  }
+});
+
 
 router.post('/', async (req, res) => {
   try {
@@ -55,5 +69,13 @@ router.post('/login', async (req, res) => {
     res.json({err})
   }
 })
+router.get('/view/:id', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+    res.json({user})
+  } catch(err) {
+    res.json({err})
+  }
+});
 
 module.exports = router;
