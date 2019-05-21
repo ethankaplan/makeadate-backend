@@ -53,6 +53,19 @@ router.delete('/', (req, res) => {
   return res.json({data: 'Received a DELETE HTTP method user'});
 });
 
+//going to fix needing to pass id with session
+router.delete('/delete/:id/:date', async(req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    user.dates.splice(req.params.date, 1);
+    user.save();
+    console.log(user);
+    res.json({ user, success: true });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 router.get('/logout', (req, res) => {
   req.session.destroy((err) => {
     if(err){
@@ -100,5 +113,7 @@ router.get('/:id/getDates', async (req, res) => {
     res.json({err})
   }
 });
+
+
 
 module.exports = router;
