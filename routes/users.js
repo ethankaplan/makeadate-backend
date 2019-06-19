@@ -28,7 +28,8 @@ router.post('/', async (req, res) => {
     user.save()
     res.json({user})
   } catch(err) {
-    res.json({err})
+    res.json({err,
+    message:"username already exists"})
   }
 });
 
