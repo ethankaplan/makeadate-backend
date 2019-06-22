@@ -5,6 +5,23 @@ const User = require('../models/User')
 const Date = require('../models/Date')
 
 
+router.post('/createDate/:id', async (req, res) => {
+  try {
+    console.log("Date post route")
+    console.log(req.body)
+    console.log(req.params.id)
+    const foundUser=await User.findById(req.params.id)
+    const newDate=await Date.create(req.body)
+    foundUser.dates.push(newDate)
+    foundUser.save()
+    res.json({
+      message:"done!",
+      status:200
+    })
+  } catch(err) {
+    res.json({err})
+  }
+});
 
 
 router.get('/getall', async (req, res) => {
@@ -61,6 +78,7 @@ router.get('/logout', (req, res) => {
     } else {
       res.json({
         success: true,
+        currentUser:{},
         message: "logged out!"
       });
     }
