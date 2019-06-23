@@ -15,7 +15,10 @@ const app = express();
 const session =require("express-session")
 app.use(cors({
   origin: ['https://secure-savannah-81040.herokuapp.com', 'http://localhost:3000'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
+  preflightContinue: true,
+  maxAge: 600,
   optionSuccessStatus:200
 }));
 app.use(logger('dev'));
