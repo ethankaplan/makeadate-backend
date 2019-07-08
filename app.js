@@ -13,6 +13,8 @@ const usersRouter = require('./routes/users');
 const yelp = require('yelp-fusion')
 const app = express();
 const session =require("express-session")
+headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+headers.append('Access-Control-Allow-Origin', 'https://secure-savannah-81040.herokuapp.com');
 app.use(cors({
   origin: ['https://secure-savannah-81040.herokuapp.com', 'http://localhost:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
