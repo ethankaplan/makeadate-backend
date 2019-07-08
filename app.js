@@ -33,6 +33,7 @@ app.use(function(req, res, next) {
 //test
 app.use(logger('dev'));
 app.use(express.json());
+app.use(allowCrossDomain)
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(session({
