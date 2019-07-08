@@ -13,27 +13,16 @@ const usersRouter = require('./routes/users');
 const yelp = require('yelp-fusion')
 const app = express();
 const session =require("express-session")
-
 app.use(cors({
   origin: ['https://secure-savannah-81040.herokuapp.com', 'http://localhost:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   preflightContinue: true,
   maxAge: 600,
-  optionSuccessStatus:200,
-  
+  optionSuccessStatus:200
 }));
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", '*');
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-  next();
-});
-//test
 app.use(logger('dev'));
 app.use(express.json());
-app.use(allowCrossDomain)
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(session({
