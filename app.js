@@ -21,6 +21,7 @@ app.use(cors({
   maxAge: 600,
   optionSuccessStatus:200
 }));
+//test
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
