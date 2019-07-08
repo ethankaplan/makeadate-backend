@@ -16,6 +16,7 @@ router.post('/createDate/:id', async (req, res) => {
     foundUser.save()
     res.json({
       message:"done!",
+
       status:200
     })
   } catch(err) {
@@ -36,14 +37,15 @@ router.get('/getall', async (req, res) => {
 });
 
 
-router.post('/', async (req, res) => {
+router.post('/new', async (req, res) => {
   try {
     const user = await User.create(req.body)
     const password = await user.password;
     const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     user.password=passwordHash;
     user.save()
-    res.json({user})
+    res.json({user,
+    })
   } catch(err) {
     res.json({err,
     message:"username already exists"})
